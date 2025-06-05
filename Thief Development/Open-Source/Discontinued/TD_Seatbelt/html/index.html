@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Seatbelt Sound</title>
+  </head>
+  <body>
+    <audio id="audio" src="" hidden></audio>
+
+    <script>
+      window.addEventListener("message", function (event) {
+        if (event.data.action === "playSound") {
+          let audio = document.getElementById("audio");
+          audio.src = `sounds/${event.data.soundFile}`;
+          audio.volume = event.data.volume !== undefined ? event.data.volume : 0.5;
+          audio.play();
+        }
+      });
+    </script>
+    
+  </body>
+</html>
